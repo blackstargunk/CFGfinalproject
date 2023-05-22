@@ -1,8 +1,5 @@
-from flask import Flask, render_template
-
-# after importing the modules, start writing the functions. When a function is wrapped in @app.route,
-# it is the code for a webpage. All the html documents must be in the 'templates' folder to be rendered.
-# all the CSS/images/styling must be in the 'static' folder to get picked up
+from flask import Flask, render_template, request, redirect, url_for, session
+from db import get_records_by_year_and_bech_rating
 
 app = Flask(__name__)
 
@@ -22,15 +19,18 @@ def playlists():
     name = request.form["username"]
     return render_template("savedplaylists.html", username=name)
 
-# search results route
+# Code to bring up results from SQL based on HTML search, will include an add to playlist button
+
 @app.route('/results', methods=["POST", "GET"])
 def results():
-    start_year = int(request.form["decade"])
-    end_year = int(start_year) + 10
-    bechdel_test_score = request.form["bechdel"]
-    main_character_value = request.form["Main Character"]
-    return render_template('results.html', year=f"{start_year}-{end_year}", score=bechdel_test_score,
-                           main_character_value=main_character_value)
+    if request.method == "POST":
+        start_year = request.form["decade"]
+        end_year = int(start_year) + 10
+        bechdel_rating = request.form["bechdel"]
+        film_results = get_records_by_year_and_bech_rating(start_year, end_year, bechdel_rating)
+
+        return render_template('results.html', film_results=film_results)
+
 if __name__ == "__main__":
     app.run(debug=True)
 
