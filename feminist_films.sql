@@ -1,0 +1,12 @@
+CREATE DATABASE films;
+DELETE FROM films;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM films;
+CREATE DATABASE Feminist_Films;
+USE Feminist_Films;
+CREATE TABLE users (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  email VARCHAR(50) NOT NULL
+);

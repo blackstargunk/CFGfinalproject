@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Feminist Films</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+	</head>
+<body>
+    <h1 align="center">Search by:</h1>
+    <h2> Welcome back, {{ username }}!</h2>
+    <form action="/results" method="post">
+        <label for="start_year">Start Year:</label>
+        <input type="text" id="start_year" name="start_year"><br>
+        <label for="end_year">End Year:</label>
+        <input type="text" id="end_year" name="end_year"><br>
+        <label for="bechdel_rating">Bechdel Rating:</label>
+        <input type="text" id="bechdel_rating" name="bechdel_rating"><br>
+  <ul class="actions special">
+            <li><input type="submit" name="submit" id="submit" value="submit"/></li>
+        </ul>    </form>
+</body>
+</html>
