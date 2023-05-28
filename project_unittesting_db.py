@@ -1,14 +1,19 @@
 import unittest
+from unittest import mock
 from unittest.mock import patch
 from db import (_connect_to_db, search_movies_database, get_records_by_year_and_bech_rating, login_to_website, register_an_account)
 
 class TestingDbFunctions(unittest.TestCase):
 
     def test_connect_to_db(self):
-       # Testing that the database successfully connects with the _connect_to_db function
-        connection = _connect_to_db('films')
-        self.assertIsNotNone(connection)
-        connection.close()
+        #Testing that the database successfully connects with the _connect_to_db function
+        with mock.patch('mysql.connector.connect') as mock_connect:
+            mock_connection = mock.Mock()
+            mock_connect.return_value = mock_connection
+            connection = _connect_to_db("films")
+            self.assertEqual(connection, mock_connection)
+            mock_connect.assert_called_once_with(host="localhost", user="root", password="Africa11", database="films")
+
 
     @patch('requests.get')
     def test_search_movies_database(self, mock_get):
