@@ -1,0 +1,91 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: ubuntu;
+	min-height: 100vh;
+	color: #555;
+}
+
+h1{
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+form{
+	max-width: 400px;
+	margin: 50px auto 200px auto;
+	border:  thin solid #e4e4e4;
+	padding: 20px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+form label{
+	display: block;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+
+form input, form textarea{
+	display: block;
+	width:  100%;
+	padding: 10px;	
+	margin-bottom: 10px;
+	font-size: 16px;
+	border:  thin solid #e4e4e4;
+	margin-bottom: 30px;
+}
+
+form select{
+	display: block;
+	width:  100%;
+	margin-bottom: 10px;
+	padding: 10px;
+	font-size: 16px;
+	border:  thin solid #e4e4e4;
+	background-color: white;
+	color: #555;
+}
+
+form input:focus,
+form select:focus,
+form textarea
+{
+	outline: none;
+}
+
+form textarea{
+	min-height: 150px;
+}
+
+form input::placeholder{
+	font-size: 16px;
+}
+
+form button{
+	background: #945b88;
+	color: white;
+	border: none;	
+	padding: 15px;
+	width:  100%;
+	font-size: 16px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+form button:active{
+	background-color: green;
+}
+
+.error{
+	margin-top: 30px;
+	color: #af0c0c;
+}
+
+.success{
+	margin-top: 30px;
+	color: green;
+}
